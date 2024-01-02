@@ -1,0 +1,536 @@
+:root {
+    --marking-color: #ccc;
+}
+@font-face {
+    font-family: 'Wix Madefor Display';
+    src: url('beatmatcher.woff2');
+}
+body, button {
+    font-family: 'Wix Madefor Display', sans-serif;
+    text-transform: uppercase;
+}
+#container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+#playerContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 2% 0;
+    gap: 1%;
+}
+button {
+    cursor: pointer;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    text-align: center;
+    font-size: 3vw;
+}
+a, a:visited {
+    color: #006BB7;
+}
+.recordPlayer button{
+    border: 1px solid #555;
+    background-image: linear-gradient(315deg, #aaa, #fff);
+}
+.recordPlayer button:active {
+    background-image: linear-gradient(315deg, #999, #fff);
+}
+.player {
+    flex-grow: 1;
+}
+.recordPlayer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    -webkit-user-select: none;
+    user-select: none;
+    background-image: linear-gradient(315deg, #222, #777);
+    padding: 2%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.power {
+    width: 7%;
+    border-radius: 50%;
+    border-width: 1px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: 12%;
+    left: 0;
+    z-index: 3;
+}
+.startStop {
+    width: 10%;
+    aspect-ratio: 1/1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+}
+.rightControlsContainer {
+    display: grid;
+    flex-basis: 10%;
+    min-width: 0;
+    align-items: center;
+    position: relative;
+}
+.platterContainer {
+    flex-basis: 90%;
+    aspect-ratio: 1/1;
+    position: relative;
+    border-radius: 50%;
+}
+.volumeControlsContainer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 11%;
+}
+.volumeControlMark {
+    stroke: var(--marking-color);
+}
+#searchCategoryButtons {
+    min-width: 0;
+}
+.volumeControl {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    border: 1px solid;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+.volumeControl div {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 1px solid;
+    top: 15%;
+    left: 50%;
+    border-radius: 50%;
+    margin-top: -2.5px;
+    margin-left: -2.5px;
+}
+.volumeControlScaleContainer, .volumeControlScaleContainer svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.volumeControlTextContainer div:nth-child(1) {
+    transform: rotate(45deg);
+}
+.platter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: grid;
+    background-color: #3f3f3f;
+}
+.strobeDots, .record {
+    grid-column: 1;
+    grid-row: 1;
+}
+div, svg {
+    box-sizing: border-box;
+}
+.record, .pitchSlider, .volumeControl {
+    touch-action: none;
+}
+.record {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 1px solid #000;
+    margin: 5% 0 0 5%;
+    background-image: url("../assets/record.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+.recordLabel {
+    width: 35%;
+    height: 35%;
+    border-radius: 50%;
+    margin: 32.5% 0 0 32.5%;
+}
+.strobeDots {
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+.strobeDots svg {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+.strobeAndLighting {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background:
+            radial-gradient(circle at 10% 10%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,1) 100%);
+    border-radius: 50%;
+}
+.strobeAndLighting.powerOn {
+    background:
+            radial-gradient(circle at 9% 80%, rgba(255,0,0,1) 0%, rgba(255,0,0,0.4) 5%, rgba(255,0,0,0) 10%),
+            radial-gradient(circle at 10% 10%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,1) 100%);
+}
+
+.pitchSlider, .pitchScale {
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+}
+.pitchSlider {
+    height: 50%;
+    z-index: 2;
+    position: relative;
+    box-sizing: border-box;
+}
+.pitchSliderTrack {
+    position: absolute;
+    left: 50%;
+    width: 5%;
+    height: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--marking-color);
+    background-color: #ddd;
+}
+.pitchSliderHandle {
+    position: absolute;
+    top: 50%;
+    margin-top: -10%;
+    left: 27%;
+    width: 50%;
+    height: 5%;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #ddd;
+    border-bottom-color: #888;
+    border-left-color: #ddd;
+    border-right-color: #888;
+    background-color: #ccc;
+    z-index: 1;
+}
+.pitchSliderHandleGroove {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin-top: -0.5px;
+    height: 0;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: #555;
+}
+.pitchScale {
+    height: 48%;
+    z-index: 1;
+    position: relative;
+    color: var(--marking-color);
+}
+.pitchScaleMark {
+    position: absolute;
+    left: 35%;
+    width: 20%;
+    height: 0;
+    border: 0.5px solid var(--marking-color);
+    margin-top: -0.5px;
+}
+.pitchScaleMark span {
+    position: absolute;
+    right: 130%;
+    top: -0.5vw;
+    font-size: 0.8vw;
+}
+#buttonContainer {
+    flex: 0 0 10%;
+    display: flex;
+    flex-direction: column;
+}
+#buttonContainer button {
+    font-size: 1.2vw;
+}
+.bpmDisplay.hidden {
+    visibility: hidden;
+    display: block;
+}
+.hidden {
+    display: none ! important;
+}
+#overlay {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(127, 127, 127, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    padding: 1vw;
+}
+#overlay.hidden {
+    display: none;
+}
+#overlay button {
+    padding: 1vw 2vw;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+}
+#instructions, #overlay button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1vw;
+    text-align: center;
+    background-color: white;
+}
+#instructions p {
+    margin: 2vh 2vw;
+    text-transform: none;
+}
+#instructions p strong {
+    text-transform: uppercase;
+}
+#freestylePanel {
+    display: flex;
+    flex-direction: row;
+}
+#trainingPanel {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 20vw;
+}
+#trainingPanel button {
+    align-self: center;
+}
+#bpmPanel {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.bpmDisplay {
+    font-size: 2vw;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+.bpmValue, .bpmUnit {
+    text-align: center;
+}
+#bpmLeftContainer {
+    width: 35.5%;
+    margin-left: 4.5%;
+}
+#bpmRightContainer {
+    width: 26%;
+    margin-right: 14%;
+}
+.bpmUnit {
+    font-size: 1vw;
+}
+#freestylePanel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#freestyleButtons {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    min-width: 0;
+    justify-content: center;
+}
+#freestyleButtons button, #trainingPanel button {
+    font-size: 1vw;
+}
+#midButtonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+#autoMatchContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1vw;
+    margin-bottom: 1vw;
+    gap: 0.2vw;
+}
+#otherButtons {
+    display: flex;
+    flex-direction: column;
+    font-size: 1vw;
+    padding: 1px;
+    margin-bottom: 1vw;
+    align-items: center;
+}
+#toggleBpms {
+    margin: auto 0;
+    width: 80%;
+}
+.newBeats {
+    background-image: url('../assets/refresh.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 10%;
+    display: block;
+    margin: auto;
+    padding: 5%;
+    border-width: 1px;
+}
+#beatMap {
+    border: 1px solid black;
+}
+#stats {
+    text-transform: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    margin-bottom: 1vw;
+}
+#stats div {
+    flex: 1 0 20%;
+    text-align: center;
+    border: 1px solid #888;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}
+#stats h2 {
+    font-size: 2vw;
+    margin: 0;
+}
+#stats span {
+    font-size: 1.5vw;
+}
+#trainingActions {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    margin: 1vw 0;
+    padding: 0 10%;
+    justify-content: center;
+}
+#trainingActions button {
+    padding: 1vw;
+    display: block;
+    flex: 1 0;
+    max-width: 20%;
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 6vw;
+    }
+    #playerContainer {
+        flex-direction: column;
+    }
+    .player {
+        margin-bottom: 2%;
+    }
+    .platterContainer {
+        flex-basis: 80%;
+    }
+    .rightControlsContainer {
+        flex-basis: 20%;
+        align-items: flex-start;
+        padding-top: 5%;
+    }
+    .pitchSlider {
+        height: 70%;
+    }
+    .pitchScale {
+        height: 68%;
+    }
+    .pitchScaleMark span {
+        font-size: 2.5vw;
+        top: -1.2vw;
+    }
+    .pitchSliderHandle {
+        margin-top: -15%;
+        height: 10%;
+        width: 80%;
+        left: 14%;
+    }
+    .volumeControlsContainer {
+        height: 25%;
+    }
+    #freestyleButtons {
+        width: 60%;
+        align-items: stretch;
+    }
+    #bpmLeftContainer, #bpmRightContainer {
+        width: 20%;
+        margin: 0;
+    }
+    #autoMatchContainer {
+        flex-direction: row;
+        margin: 0;
+        padding: 5px 0 5px 0;
+        border-width: 1px 0 0 0;
+        justify-content: center;
+    }
+    #midButtonContainer button, #trainingPanel button, #overlay button {
+        font-size: 2.5vw;
+        height: 8vw;
+    }
+    #overlay button {
+        font-size: 4vw;
+    }
+    #midButtonContainer button, #trainingPanel button {
+        flex-grow: 1;
+    }
+    legend {
+        font-size: 2.5vw;
+    }
+    #trainingActions button {
+        max-width: 30%;
+    }
+    .bpmValue {
+        font-size: 5vw;
+    }
+    .bpmUnit {
+        font-size: 2vw;
+    }
+    #toggleBpms {
+        width: 100%;
+    }
+    .newBeats {
+        margin: inherit;
+    }
+    #stats h2 {
+        font-size: 3vw;
+        word-spacing: 100vw;
+        margin-bottom: 5%;
+    }
+    #stats span {
+        font-size: 3vw;
+    }
+    #stats div {
+        align-items: center;
+    }
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Beat Matcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Beat Matcher</h1>
+        <div id="playerContainer">
+            <div class="player" id="leftPlayer"></div>
+            <div class="player" id="rightPlayer"></div>
+        </div>
+        <div id="freestylePanel">
+            <div class="bpmDisplay" id="bpmLeftContainer">
+                <div class="bpmValue" id="bpmLeft"></div>
+                <div class="bpmUnit">BPM</div>
+            </div>
+            <div id="freestyleButtons">
+                <button id="newBeatsLeft" class="newBeats"> </button>
+                <div id="midButtonContainer">
+                    <fieldset id="autoMatchContainer">
+                        <legend>Auto Match</legend>
+                        <button id="autoMatchAll">All</button>
+                        <button id="autoMatchPitch">Pitch</button>
+                        <button id="autoMatchPosition">Position</button>
+                    </fieldset>
+                    <div id="otherButtons">
+                        <button id="toggleBpms">Show BPMs</button>
+                    </div>
+                </div>
+                <button id="newBeatsRight" class="newBeats"> </button>
+            </div>
+            <div class="bpmDisplay" id="bpmRightContainer">
+                <div class="bpmValue" id="bpmRight"></div>
+                <div class="bpmUnit">BPM</div>
+            </div>
+        </div>
+        <div id="trainingPanel">
+            <button id="scoreBeats">Analyse</button>
+            <div id="stats">
+                <div>
+                    <h2>BPM Difference</h2>
+                    <span id="bpmDiff"></span>
+                </div>
+                <div>
+                    <h2>BPM Error</h2>
+                    <span id="bpmDiffPercentage"></span>
+                </div>
+                <div>
+                    <h2>Total Mismatch</h2>
+                    <span id="totalMismatch"></span>
+                </div>
+                <div>
+                    <h2>Beat Period</h2>
+                    <span id="beatPeriod"></span>
+                </div>
+            </div>
+            <canvas id="beatMap"></canvas>
+            <div id="trainingActions">
+                <button id="tryAgain">Try Again</button>
+                <button id="nextBeats">Next Beats</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="overlay">
+        <div id="instructions">
+            <p>
+                Use this tool to sharpen your beat-matching skills!
+            </p>
+            <p>
+                You will hear 2 drum loops playing out of sync, try to match them up so they sound good.<br>
+                This will be easier with headphones, one loop will play in each ear.
+            </p>
+            <p>
+                In <strong>Freestyle</strong> mode you can just play around, using the Auto-Match and BPM Display tools to help you.
+            </p>
+            <p>
+                In <strong>Training</strong> mode these tools are hidden, you are on your own! When you are happy with your mix click the 'Analyse' button to see how you did.
+            </p>
+        </div>
+        <button id="startFreestyle">Freestyle</button>
+        <button id="startTraining">Training</button>
+    </div>
+    <script src="js/main.js" type="module"></script>
+</body>

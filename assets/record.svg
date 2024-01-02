@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="400"
+        height="400"
+        id="svg2"
+        version="1.0">
+  <defs
+          id="defs4">
+    <linearGradient
+            id="linearGradient3153">
+      <stop
+              style="stop-color:#ffffff"
+              offset="0"
+              id="stop3155" />
+      <stop
+              style="stop-color:#ffffff;stop-opacity:0"
+              offset="1"
+              id="stop3157" />
+    </linearGradient>
+    <filter
+            id="filter3315">
+      <feGaussianBlur
+              stdDeviation="3.7"
+              id="feGaussianBlur3317" />
+    </filter>
+    <radialGradient
+            xlink:href="#linearGradient3153"
+            id="radialGradient3328"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="matrix(-0.8695893,0.8695893,-1.9614862,-1.9614862,681.5104,178.1413)"
+            cx="289.42923"
+            cy="209.66924"
+            fx="289.42923"
+            fy="209.66924"
+            r="92.5" />
+  </defs>
+  <use
+          x="0"
+          y="0"
+          xlink:href="#path3191"
+          id="use31"
+          transform="translate(2.71429,4)"
+          width="100%"
+          height="100%"
+          style="fill-opacity:0.5;filter:url(#filter3315)" />
+  <circle r="200" cx="200" cy="200" id="path3191" fill="black" />
+  <use
+          height="100%"
+          width="100%"
+          transform="rotate(180,200,200)"
+          id="use3151"
+          xlink:href="#path3193"
+          y="0"
+          x="0" />
+  <path
+          id="path3193"
+          d="m 106.4375,200 c 0,-51.65143 41.91107,-93.59375 93.5625,-93.59375 V 18.5625 C 99.85143,18.5625 18.56249,99.85142 18.5625,200 Z"
+          style="fill:url(#radialGradient3328)" />
+
+</svg>

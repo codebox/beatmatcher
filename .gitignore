@@ -1,0 +1,7 @@
+.idea
+audio/
+.DS_Store
+ENV/
+download_audio/cache
+download_audio/mp3s
+
