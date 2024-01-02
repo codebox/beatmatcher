@@ -442,51 +442,69 @@ div, svg {
     flex: 1 0;
     max-width: 20%;
 }
+footer {
+    font-size: 1.5vw;
+    text-align: center;
+    text-transform: none;
+    margin: 1vw;
+}
 @media (max-width: 600px) {
     h1 {
         font-size: 6vw;
     }
+
     #playerContainer {
         flex-direction: column;
     }
+
     .player {
         margin-bottom: 2%;
     }
+
     .platterContainer {
         flex-basis: 80%;
     }
+
     .rightControlsContainer {
         flex-basis: 20%;
         align-items: flex-start;
         padding-top: 5%;
     }
+
     .pitchSlider {
         height: 70%;
     }
+
     .pitchScale {
         height: 68%;
     }
+
     .pitchScaleMark span {
         font-size: 2.5vw;
         top: -1.2vw;
     }
+
     .pitchSliderHandle {
         margin-top: -15%;
         height: 10%;
         width: 80%;
         left: 14%;
     }
+
     .volumeControlsContainer {
         height: 25%;
     }
+
     #freestyleButtons {
         width: 60%;
         align-items: stretch;
     }
+
     #bpmLeftContainer, #bpmRightContainer {
         width: 20%;
         margin: 0;
     }
+
     #autoMatchContainer {
         flex-direction: row;
         margin: 0;
@@ -494,43 +512,60 @@ div, svg {
         border-width: 1px 0 0 0;
         justify-content: center;
     }
+
     #midButtonContainer button, #trainingPanel button, #overlay button {
         font-size: 2.5vw;
         height: 8vw;
     }
+
     #overlay button {
         font-size: 4vw;
     }
+
     #midButtonContainer button, #trainingPanel button {
         flex-grow: 1;
     }
+
     legend {
         font-size: 2.5vw;
     }
+
     #trainingActions button {
         max-width: 30%;
     }
+
     .bpmValue {
         font-size: 5vw;
     }
+
     .bpmUnit {
         font-size: 2vw;
     }
+
     #toggleBpms {
         width: 100%;
     }
+
     .newBeats {
         margin: inherit;
     }
+
     #stats h2 {
         font-size: 3vw;
         word-spacing: 100vw;
         margin-bottom: 5%;
     }
+
     #stats span {
         font-size: 3vw;
     }
+
     #stats div {
         align-items: center;
+    }
+
+    footer {
+        font-size: 3vw;
+        margin: 3vw;
     }
 }
