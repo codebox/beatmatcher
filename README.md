@@ -1,6 +1,6 @@
 # Beatmatching Game
 
-Try out your mixing skills with this [online beatmatching game](https://codebox.net/beatmatcher)!
+Try out your mixing skills with this [online beatmatching game](https://codebox.net/pages/beatmatching-game/online)!
 
 You will hear 2 drum loops playing at different speeds, which will probably sound awful. You need to adjust the
 speeds of the loops so that they match, and then synchronise the beats so that they play at the same time.
@@ -37,7 +37,7 @@ Try some scratching or backspins and see how it sounds!
 
 The game itself has 2 modes:
 
-##Freestyle Mode
+## Freestyle Mode
 
 If you haven't done any mixing before start here. In Freestyle Mode you can just play around with the turntables,
 try (and probably fail) to get a nice mix going, and then use the Auto-Match All button to hear what the loops sound
@@ -48,9 +48,10 @@ of sync again very quickly!).
 Here is a video showing Freestyle mode. The 2 drum loops start off out-of-sync and are then automatically matched.
 Notice how the speed controls and the BPM values change when the 'All' button is pressed:
 
-https://codebox.net/assets/video/beatmatcher/auto_mix_demo.mp4
+<a href="https://codebox.net/assets/video/beatmatcher/auto_mix_demo.mp4"><img src="https://codebox.net/assets/video/beatmatcher/auto_mix_demo_poster.png" width="600" ></a>
 
-##Training Mode
+
+## Training Mode
 
 Training Mode is intended for anyone who is more serious about improving their mixing skills. Initially the Auto-Match buttons and BPM
 displays are hidden. Mix the drum loops together by ear as best you can, and then press the 'Analyse' button to see how you did.
@@ -65,4 +66,4 @@ is still a lot of red on the ladder display (the exact amount is shown by the 'T
 the beats are still out of sync. Clicking the Auto-Match Position button brings the beats into sync, and the Total Mismatch
 score drops to zero indicating a perfect mix.
 
-https://codebox.net/assets/video/beatmatcher/training_mode.mp4
+<a href="https://codebox.net/assets/video/beatmatcher/training_mode.mp4"><img src="https://codebox.net/assets/video/beatmatcher/training_mode_poster.png" width="600" ></a>
