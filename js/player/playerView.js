@@ -180,7 +180,7 @@ export function buildPlayerView(config) {
 
     const pitchScale = [];
     for (let p=-config.pitchRangePercent; p<=config.pitchRangePercent; p+=2) {
-        const top = 100 * (1 - (p + config.pitchRangePercent) / (2 * config.pitchRangePercent));
+        const top = 100 * ((p + config.pitchRangePercent) / (2 * config.pitchRangePercent));
         pitchScale.push(`<div class="pitchScaleMark" style="top: ${top}%"><span>${p}</span></div>`);
     }
     elPitchScale.innerHTML = pitchScale.join('');
@@ -242,11 +242,11 @@ export function buildPlayerView(config) {
         const pitchSliderEventY = getEventClientCoords(e).clientY + window.scrollY,
             pitchScaleEventY = pitchSliderEventY - (pitchScaleTop - pitchSliderTop) / 2,
             scalePercentage = 100 * (pitchScaleEventY - pitchScaleTop) / pitchScaleHeight,
-            pitchPercentage = - (scalePercentage - 50) * 2 * config.pitchRangePercent / 100;
+            pitchPercentage =  (scalePercentage - 50) * 2 * config.pitchRangePercent / 100;
         return Math.min(Math.max(pitchPercentage, -config.pitchRangePercent), config.pitchRangePercent);
     }
     function movePitchSlider(pitchPercentage) { // -10 to +10
-        const sliderPercentage = -pitchPercentage / config.pitchRangePercent * 50 + 50,
+        const sliderPercentage = pitchPercentage / config.pitchRangePercent * 50 + 50,
             sliderOffsetPercentage = (pitchScaleTop - pitchSliderTop) / pitchSliderHeight * 100;
         elPitchSliderHandle.style.top = (sliderOffsetPercentage + sliderPercentage * pitchScaleHeight / pitchSliderHeight ) + '%';
         currentPitchPercentage = pitchPercentage;
