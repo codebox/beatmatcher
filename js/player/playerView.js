@@ -203,21 +203,18 @@ export function buildPlayerView(config) {
         const rect = e.currentTarget.getBoundingClientRect(),
             {clientX, clientY} = getEventClientCoords(e),
             x = clientX - rect.left - rect.width / 2,
-            y = clientY - rect.top - rect.height / 2,
-            angle = 180 + Math.atan2(y, x) * 180 / Math.PI;
-        return angle;
+            y = clientY - rect.top - rect.height / 2;
+        return  180 + Math.atan2(y, x) * 180 / Math.PI;
     }
-
-    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
 
     let platterRpm = 0, recordRpm = 0, hold = false, previousAngle = null, previousAngleTs, pitchDrag;
 
-    elRecord.addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', () => {
+    ['touchstart', 'mousedown'].forEach(evt => elRecord.addEventListener(evt, () => {
         hold = true;
         eventSource.trigger('holdOn');
-    });
+    }));
 
-    document.addEventListener(isTouchDevice ? 'touchend' : 'mouseup', () => {
+    ['touchend', 'mouseup'].forEach(evt => document.addEventListener(evt, () => {
         if (hold) {
             hold = false;
             eventSource.trigger('holdOff');
@@ -226,7 +223,7 @@ export function buildPlayerView(config) {
         if (pitchDrag) {
             pitchDrag = false;
         }
-    });
+    }));
 
     let currentPitchPercentage, pitchScaleHeight, pitchSliderHeight, pitchScaleTop, pitchSliderTop;
     function setScaleAndSizeValues() {
@@ -251,16 +248,19 @@ export function buildPlayerView(config) {
         elPitchSliderHandle.style.top = (sliderOffsetPercentage + sliderPercentage * pitchScaleHeight / pitchSliderHeight ) + '%';
         currentPitchPercentage = pitchPercentage;
     }
-    elPitchSliderHandle.addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', e => {
+
+    ['touchstart', 'mousedown'].forEach(evt => elPitchSliderHandle.addEventListener(evt, () => {
         pitchDrag = true;
-    });
-    elPitchSlider.addEventListener(isTouchDevice ? 'touchmove' : 'mousemove', e => {
+    }));
+
+    ['touchmove', 'mousemove'].forEach(evt => elPitchSlider.addEventListener(evt, e => {
         if (pitchDrag) {
             const pitchPercentage = getPitchPercentageFromSliderEvent(e);
             movePitchSlider(pitchPercentage);
             eventSource.trigger('pitchChange', 1 + pitchPercentage / 100);
         }
-    });
+    }));
+
     elPitchSlider.addEventListener('click', e => {
         const clickPercentage = getPitchPercentageFromSliderEvent(e);
         if (clickPercentage < currentPitchPercentage) {
@@ -276,24 +276,25 @@ export function buildPlayerView(config) {
     elPower.addEventListener('click', () => {
          eventSource.trigger('powerClick');
     });
-    elVolumeControl.addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', e => {
+    ['touchstart', 'mousedown'].forEach(evt => elVolumeControl.addEventListener(evt, e => {
         draggingVolume = true;
         draggingVolumeInitialY = getEventClientCoords(e).clientY;
-    });
+    }));
 
-    document.addEventListener(isTouchDevice ? 'touchmove' : 'mousemove', e => {
-       if (draggingVolume) {
-           const dragYDistance = draggingVolumeInitialY - getEventClientCoords(e).clientY,
+    ['touchmove', 'mousemove'].forEach(evt => document.addEventListener(evt, e => {
+        if (draggingVolume) {
+            const dragYDistance = draggingVolumeInitialY - getEventClientCoords(e).clientY,
                 dragYDistanceBounded = Math.max(Math.min(dragYDistance, 90), -90),
                 volume = (dragYDistanceBounded + 90) / 180;
-           eventSource.trigger('volumeChange', volume);
-       }
-    });
-    document.addEventListener(isTouchDevice ? 'touchend' : 'mouseup', e => {
-         draggingVolume = false;
-    });
+            eventSource.trigger('volumeChange', volume);
+        }
+    }));
 
-    elRecord.addEventListener(isTouchDevice ? 'touchmove' : 'mousemove', e => {
+    ['touchend', 'mouseup'].forEach(evt => document.addEventListener(evt, () => {
+        draggingVolume = false;
+    }));
+
+    ['touchmove', 'mousemove'].forEach(evt => elRecord.addEventListener(evt, e => {
         if (hold) {
             const angle = getAngleFromMoveEvent(e);
             if (previousAngle === null) {
@@ -316,7 +317,7 @@ export function buildPlayerView(config) {
                 eventSource.trigger('manualRotation', recordRpm);
             }
         }
-    });
+    }));
 
     function rotate(el, getRpm) {
         let previousTs = 0, degrees = 0;
@@ -366,8 +367,7 @@ export function buildPlayerView(config) {
         },
         setAudioFilePath(value, labelText) {
             audioFilePath = value;
-            const labelSvg = buildLabelSvg(audioFilePath, labelText);
-            elRecordLabel.innerHTML = labelSvg;
+            elRecordLabel.innerHTML = buildLabelSvg(audioFilePath, labelText);
         },
         on(eventName) {
             return eventSource.on(eventName);
