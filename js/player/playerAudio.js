@@ -102,6 +102,10 @@ export async function buildPlayerAudio(config) {
                 changePlaybackRateAndDirection(newPlaybackRate, totalPlayTimeInSeconds);
             } else if (gotForwardBuffer) {
                 sourceNode.playbackRate.value = playbackRate = newPlaybackRate;
+                if (!newPlaybackRate) {
+                    sourceNode.stop(0);
+                    sourceNode = null;
+                }
                 lastPlaybackChangeDetails.offset = getCurrentOffset();
                 lastPlaybackChangeDetails.ts = Date.now();
                 lastPlaybackChangeDetails.playbackRate = playbackRate;
@@ -109,6 +113,10 @@ export async function buildPlayerAudio(config) {
             } else if (gotReverseBuffer) {
                 playbackRate = newPlaybackRate
                 sourceNode.playbackRate.value = -newPlaybackRate;
+                if (!newPlaybackRate) {
+                    sourceNode.stop(0);
+                    sourceNode = null;
+                }
                 lastPlaybackChangeDetails.offset = getCurrentOffset();
                 lastPlaybackChangeDetails.ts = Date.now();
                 lastPlaybackChangeDetails.playbackRate = -playbackRate;
