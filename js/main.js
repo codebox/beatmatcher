@@ -118,6 +118,9 @@ function setup(loopLibrary) {
             pairs = moreBeats.map(t => [t, findNearestValue(fewerBeats, t)]).sort(v => Math.min(...v));
 
         function contiguous(firstPair, secondPair) {
+            if (!firstPair || !secondPair) {
+                return false;
+            }
             return Math.max(...firstPair) === Math.min(...secondPair);
         }
 
